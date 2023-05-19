@@ -8,10 +8,13 @@ from django.contrib.auth.models import AbstractUser
 
 class CustomUser(AbstractUser):
 
+    class Meta:
+        ordering = ['pk']
 
-    username = models.CharField(max_length=50, unique = True, null=False)
-    email = models.EmailField(max_length=130, unique = True , null = False)
-    phone_numer = models.CharField(max_length=13, null=True, blank=True)
+
+    username = models.CharField(max_length = 50, null = True, blank = True)
+    email = models.EmailField(max_length = 130, unique = True , null = False)
+    phone_numer = models.CharField(max_length = 13, null = True, blank = True)
     
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = ['username', 'password'] 

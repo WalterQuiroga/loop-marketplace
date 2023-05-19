@@ -4,24 +4,24 @@ from .models import CustomUser
 
 # Register your models here.
 class CustomUserAdmin(UserAdmin, admin.ModelAdmin):
-     list_display = ('id', 'first_name', 'last_name', 'email', 'phone_numer', 'date_joined')
-     list_filter = ('date_joined',)
-     search_fields = ('id', 'first_name', 'last_name', 'email', 'phone_numer')
-     date_hierarchy = 'date_joined'
+    list_display = ('id', 'first_name', 'last_name', 'email', 'phone_numer', 'date_joined')
+    list_filter = ('date_joined',)
+    search_fields = ('id', 'first_name', 'last_name', 'email', 'phone_numer')
+    date_hierarchy = 'date_joined'
      
-     fieldsets = (
-         (   None, {"fields": ('username', 'password')}
-         ),
-         (
-             ("Informacion del usuario"),{
-                 'fields': ('first_name', 'last_name', 'email', 'phone_numer')
-              } 
-          ),
-          (   ("Metadata"), {
-                  'fields': ('last_login', 'date_joined')
-               }
-          ),
-     )
+    fieldsets = (
+        (None, {'fields': ('username', 'password')}
+        ),
+
+        (("Informacion del usuario"),{'fields': ('first_name', 'last_name', 'email', 'phone_numer')} 
+           
+        ),
+     
+        (("Metadata"), {'fields': ('last_login', 'date_joined')}
+        
+        )
+
+    )
 
 
     
