@@ -12,8 +12,7 @@ class UserSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = CustomUser
-        fields = ["id", "first_name", "last_name", "username", "email", "phone_numer"]
-
+        fields = '__all__'
         
 class SignupSerializer(serializers.ModelSerializer):
     username = serializers.CharField(required=False, write_only=True)
@@ -22,8 +21,9 @@ class SignupSerializer(serializers.ModelSerializer):
     email = serializers.EmailField(required = True)
     password = serializers.CharField(required = True, write_only = True)
     phone_numer= serializers.CharField(required = True)
+    
 
 
     class Meta:
         model = CustomUser
-        fields = ["id", "first_name", "last_name", "email", "phone_numer"]
+        fields = '__all__'

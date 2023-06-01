@@ -28,11 +28,12 @@ class LoginView(APIView):
             return Response(user_serializer.data, status = status.HTTP_200_OK)
         else:
             return Response(
-              {
-                    'error': "401 Unauthorized",
-                    'message': "Invalid email or password"
-              },
-              status = status.HTTP_401_UNAUTHORIZED)
+                  {
+              
+                       'error': "401 Unauthorized",
+                       'message': "Invalid email or password"
+                  },
+                  status = status.HTTP_401_UNAUTHORIZED)
 
 class SignUpView(APIView):
     serializer_class = UserSerializer
