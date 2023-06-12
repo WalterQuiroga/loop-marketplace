@@ -15,6 +15,9 @@ from datetime import datetime
 
 
 # Create your views here.
+
+
+
 class LoginView(APIView):
 
     def post(self, request):
@@ -37,10 +40,13 @@ class LoginView(APIView):
         else:
             return Response(
                 {
-                    "error": "401 Unauthorized",
-                    "message": "The credentiales provided are not valid. Please review your information and try again."
+                    "error": "401 no autorizado",
+                    "message": "credenciales no validas."
                 }, 
                 status = status.HTTP_401_UNAUTHORIZED)
+
+
+
 
 
 class SignUpView(APIView):
@@ -63,9 +69,12 @@ class SignUpView(APIView):
             return Response(
             {   
                 "error": "400 Bad Request",
-                "message": f"Email '{serializer.validated_data['email']}' is already registered"
+                "message": f"Email '{serializer.validated_data['email']}' existente"
             }, 
             status = status.HTTP_400_BAD_REQUEST)
+
+       
+
 
        
 class LogoutView(APIView):
@@ -80,13 +89,13 @@ class LogoutView(APIView):
             return Response(
                 {
                     "status": "200 OK",
-                    "message": "You have successfully logged out"
+                    "message": "sesion finalizada"
                 }
             )
         except Token.DoesNotExist:
             return Response(
                 {
                     "error": "401 Unauthorized",
-                    "message": "Unassociated token for the user"
+                    "message": "no coincide token de seguridad"
                 }, status = status.HTTP_401_UNAUTHORIZED
             )
