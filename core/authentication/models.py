@@ -36,5 +36,5 @@ class ProfileType(models.Model):
     
 
 class Profile(models.Model):
-    user = models.ForeignKey(CustomUser, on_delete = models.CASCADE)
+    user = models.OneToOneField(CustomUser, on_delete = models.CASCADE)
     profile_type = models.ForeignKey(ProfileType, on_delete = models.PROTECT)
